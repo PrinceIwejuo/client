@@ -4,7 +4,7 @@ import {
     Link
   } from "react-router-dom"
 
-const AllProducts = () => {
+const AllProducts = (props) => {
 
     let [productlist, setProductList] = useState([])
 
@@ -17,7 +17,7 @@ const AllProducts = () => {
         .catch(err=>{
             console.log("err", err)
         })
-    },[])
+    },[props.formSent])
 
     
     return(
@@ -34,6 +34,7 @@ const AllProducts = () => {
                                     Price: {productObj.Price} <br />
                                     Description: {productObj.Description}
                                 </p>
+                                <Link to={`/edit/${productObj._id}`} className="btn btn-success"> Edit {productObj.Title}</Link>
                             </div>
                         </div>
                     )
